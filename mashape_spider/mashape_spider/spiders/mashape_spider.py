@@ -1,5 +1,7 @@
 """
 selenium is used with scrapy to scrape dynamic content
+Author: Peiwen Chen
+Date: Jan 4, 2015
 """
 
 import scrapy
