@@ -39,4 +39,6 @@ This mashape_spider crawls the "https://www.mashape.com/george-vustrey/ultimate-
 
 Next Step:
 *****************
-fetch more public API, store the data
+make spider scrape APIs that have multiple endpoint or parameters;
+fetch more public API, store the data;
+test and validate on chrome 
