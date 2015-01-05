@@ -12,13 +12,13 @@ on mashape.com and store the data.
 
 Requirements:
 ******************
-1. Scrapy
+Scrapy
 To install Scrapy, please follow the official guide:
 http://doc.scrapy.org/en/0.24/intro/install.html
 
 Make sure dependencies lib installed and worked.
 
-2. Selenium
+Selenium
 To scrape the JS rendered content, Selenium is needed.
 steps for Selenium env setup: 
 
