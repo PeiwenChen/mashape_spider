@@ -24,6 +24,9 @@ steps for Selenium env setup:
 
 a. Download selenium server from http://www.seleniumhq.org/download/   selenium-server-standalone-2.37.0.jar
 b. Install Selenium Safari(or other web browers) Webdriver Extension
+Note: webdriver is not found in Apple Extensions, a workaround is to install it manually, see:
+https://code.google.com/p/selenium/issues/detail?id=7933
+
 c. Install Selenium Client & WebDriver Language Bindings for Python: pip install selenium
 
 
