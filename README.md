@@ -1,7 +1,7 @@
 mashape_spider
 ==============
 
-a spider to crape mashape.com 
+a spider to scrape mashape.com 
 
 mashape.com is the largest world-class marketplace to consume, 
 distribute, manage, and monitor both private and public APIs 
