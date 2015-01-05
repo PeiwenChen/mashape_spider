@@ -39,5 +39,4 @@ This mashape_spider crawls the "https://www.mashape.com/george-vustrey/ultimate-
 
 Next Step:
 *****************
-1. fix the response hover.perform() issue, the code-snippet of "Java" cannot be fetched
-2. fetch more public API.
+fetch more public API, store the data
