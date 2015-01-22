@@ -9,6 +9,7 @@ import scrapy
 from selenium import webdriver
 import os
 import json
+from scrapy.http import Request
 
 from collections import Iterable
 
@@ -18,15 +19,31 @@ os.environ["SELENIUM_SERVER_JAR"] = "selenium-server-standalone-2.44.0.jar"
 class MashapeSpider(scrapy.Spider):
 	name = "mashape"
 	allowed_domains = ["www.mashape.com"]
-	start_urls = [
+	"""
+	def start_requests(self):
+		start_urls = [
 			#"https://www.mashape.com/george-vustrey/ultimate-weather-forecasts",
-			"https://www.mashape.com/mark-sutuer/ip-utils"
+			#"https://www.mashape.com/mark-sutuer/ip-utils"
+			"%s" %read_url
 			]
-	def __init__(self):
+		# read the url list from a file
+		# f = open("urls.txt", "r")
+		# start_urls = [url.strip() for url in f.readlines()]
+		# f.close()
+		#return [Request(url = start_url) for start_url in start_urls]
+	"""
+	def __init__(self, readurl=None, *args, **kwargs):
+		super(MashapeSpider, self).__init__(*args, **kwargs)
 		self.driver = webdriver.Safari()
 		self.api_all = []
 		# if running on chrome
 		#self.driver = webdriver.chrome()
+
+		start_urls = [
+			#"https://www.mashape.com/george-vustrey/ultimate-weather-forecasts",
+			#"https://www.mashape.com/mark-sutuer/ip-utils"
+			"%s" %readurl
+			]
 
 	def parse_request(self, response, request):
 			"""
@@ -156,7 +173,7 @@ class MashapeSpider(scrapy.Spider):
 			idx += 1
 
 		# write api_all to json file
-		with open('api.json', 'w') as outfile:
+		with open('api.json', 'a') as outfile:
 			json.dump(self.api_all, outfile)
 
 	def parse(self, response):
