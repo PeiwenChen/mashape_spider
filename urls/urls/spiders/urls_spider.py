@@ -1,5 +1,8 @@
 """
 a spider to query urls for all the APIs in mashape
+Usage: scrapy crawl urls -a pageno=x
+output is urls.txt
+
 Author: Peiwen Chen
 Date: Jan 20, 2015
 """
@@ -19,21 +22,16 @@ class UrlsSpider(scrapy.Spider):
 	name = "urls"
 	allowed_domains = ["www.mashape.com"]
 	
-	start_urls = [
-			#"https://www.mashape.com/explore?sort=developers&page=9",
-			"https://www.mashape.com/explore?sort=developers&page=10"
-			]
-		# read the url list from a file
-		# f = open("urls.txt", "r")
-		# start_urls = [url.strip() for url in f.readlines()]
-		# f.close()
-		#return [Request(url = start_url) for start_url in start_urls]
-
-	def __init__(self):
+	def __init__(self, pageno=None, *args, **kwargs):
+		super(UrlsSpider, self).__init__(*args, **kwargs)
 		self.driver = webdriver.Safari()
 		self.url_list = []
 		# if running on chrome
 		#self.driver = webdriver.chrome()
+
+		self.start_urls = [
+				"https://www.mashape.com/explore?sort=developers&page=%s" %pageno
+				]
 
 	def parse(self, response):
 		self.driver.get(response.url)
@@ -48,5 +46,7 @@ class UrlsSpider(scrapy.Spider):
 			self.url_list.append(url)	
 
 		self.driver.close()
-		print self.url_list
+		with open ("urls.txt", "a") as f:
+			f.write('\n')
+			f.write("\n".join(url for url in self.url_list))
 
