@@ -19,8 +19,8 @@ class UrlsSpider(scrapy.Spider):
 	name = "urls"
 	allowed_domains = ["www.mashape.com"]
 	
-	def start_requests(self):
-		start_urls = [
+	start_urls = [
+			#"https://www.mashape.com/explore?sort=developers&page=9",
 			"https://www.mashape.com/explore?sort=developers&page=10"
 			]
 		# read the url list from a file
@@ -37,15 +37,16 @@ class UrlsSpider(scrapy.Spider):
 
 	def parse(self, response):
 		self.driver.get(response.url)
-		blocks = self.driver.find_elements_by_xpath('//div[@class="apis blocks grid"]/div/div/div/div[@class="api api-card block panel panel-default"]')
+		blocks = self.driver.find_elements_by_xpath('//div[@class="apis blocks grid"]/div/div/div/div[@class="api api-card block panel panel-default"]/a')
 	
 		if isinstance(blocks, Iterable):
 			for block in blocks:
-				url = block.find_element_by_xpath('.//a/@href').extract()
-				print url
+				url = block.get_attribute('href')
+				#url = block.find_element_by_xpath('.//a/@href').extract()
 				self.url_list.append(url)
 		else:
-			print block
+			self.url_list.append(url)	
 
 		self.driver.close()
+		print self.url_list
 
