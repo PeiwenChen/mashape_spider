@@ -34,7 +34,7 @@ c. Install Selenium Client & WebDriver Language Bindings for Python: pip install
 mashape_spider
 ==============
 Usage:
-scrapy crawl mashape -a readurl="https://www.mashape.com/george-vustrey/ultimate-weather-forecasts" 
+scrapy crawl mashape -a readurl=https://www.mashape.com/george-vustrey/ultimate-weather-forecasts
 
 It crawls the given url and get all the REST APIs of it.
 The sample output is: api.json
