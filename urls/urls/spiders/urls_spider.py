@@ -24,10 +24,11 @@ class UrlsSpider(scrapy.Spider):
 	
 	def __init__(self, pageno=None, *args, **kwargs):
 		super(UrlsSpider, self).__init__(*args, **kwargs)
-		self.driver = webdriver.Safari()
+		#self.driver = webdriver.Safari()
+		
 		self.url_list = []
 		# if running on chrome
-		#self.driver = webdriver.chrome()
+		self.driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver")
 
 		self.start_urls = [
 				"https://www.mashape.com/explore?sort=developers&page=%s" %pageno
